@@ -4,8 +4,16 @@ spring:
       server:
         native:
           search-locations: classpath:/shared
+      discovery:
+        enabled: true
   profiles:
      active: native
+  application:
+    name: config
 
 server:
   port: 8888
+eureka:
+  client:
+    service-url:
+      defaultZone: http://registry.kimloong.me:8761/eureka/

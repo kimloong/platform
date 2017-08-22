@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: uaa
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: config
+eureka:
+  client:
+    service-url:
+      defaultZone: http://registry.kimloong.me:8761/eureka/
+
+server:
+  port: 5000
+logging:
+  level:
+    org.springframework: debug
