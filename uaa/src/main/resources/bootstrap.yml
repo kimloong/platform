@@ -14,6 +14,7 @@ eureka:
 
 server:
   port: 5000
+  context-path: /uc
 logging:
   level:
     org.springframework: debug

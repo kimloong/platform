@@ -19,14 +19,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UserDetailsService userDetailsService;
+//    @Autowired
+//    private UserDetailsService userDetailsService;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         PasswordEncoder passwordEncoder = passwordEncoder();
 //        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
-        auth.jdbcAuthentication().withDefaultSchema()
+        auth.inMemoryAuthentication()
                 .withUser("user").password(passwordEncoder.encode("password")).roles("USER").and()
                 .withUser("admin").password(passwordEncoder.encode("password")).roles("USER", "ADMIN").and()
                 .passwordEncoder(passwordEncoder);
@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // @formatter:off
         http
-//                .csrf().disable()
+                .csrf().disable()
 //                .anonymous().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST,"/users").permitAll()
