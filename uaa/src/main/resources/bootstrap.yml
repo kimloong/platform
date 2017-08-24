@@ -14,6 +14,8 @@ eureka:
 
 server:
   port: 5000
-logging:
-  level:
-    org.springframework: debug
+# 在1.5.x版本中，这句话很关键，具体请看问题1
+security:
+  oauth2:
+    resource:
+      filter-order: 1
