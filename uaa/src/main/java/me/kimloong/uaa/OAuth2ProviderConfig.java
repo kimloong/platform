@@ -27,7 +27,8 @@ public class OAuth2ProviderConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.tokenKeyAccess("permitAll()")
-                .checkTokenAccess("isAuthenticated()");
+                .checkTokenAccess("isAuthenticated()")
+                .allowFormAuthenticationForClients();
     }
 
     @Override
@@ -46,6 +47,13 @@ public class OAuth2ProviderConfig extends AuthorizationServerConfigurerAdapter {
                 .autoApprove("read")
                 .and()
                 .withClient(MICROBLOG_RESOURCE)
-                .secret("secret123");
+                .secret("secret123")
+                .and()
+                .withClient("resource-sample")
+                .authorizedGrantTypes("client_credentials", "authorization_code")
+                .redirectUris("http://localhost:8082/microblog-client")
+                .secret("secret123")
+                .scopes("read")
+                .autoApprove("read");
     }
 }

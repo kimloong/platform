@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: resource-sample
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: config
+eureka:
+  client:
+    service-url:
+      defaultZone: http://registry.kimloong.me:8761/eureka/
+
+security:
+  oauth2:
+    client:
+      clientId: resource-sample
+      client-secret: secret123
+      access-token-uri: http://uaa.kimloong.me:5000/oauth/token
+      grant-type: client_credentials
+    resource:
+      id: resource-sample
+      user-info-uri: http://uaa.kimloong.me:5000/users/me
+logging:
+  level:
+    org.springframework: debug

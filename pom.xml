@@ -12,6 +12,7 @@
 		<module>config</module>
 		<module>registry</module>
 		<module>uaa</module>
+		<module>resource-sample</module>
 	</modules>
 
 </project>
