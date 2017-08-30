@@ -21,7 +21,4 @@ security:
       grant-type: client_credentials
     resource:
       id: resource-sample
-      user-info-uri: http://uaa.kimloong.me:5000/users/me
-logging:
-  level:
-    org.springframework: debug
+      token-info-uri: http://uaa.kimloong.me:5000/oauth/check_token

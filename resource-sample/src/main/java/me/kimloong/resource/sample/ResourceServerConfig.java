@@ -2,7 +2,6 @@ package me.kimloong.resource.sample;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
-import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +11,6 @@ import org.springframework.security.oauth2.client.token.grant.client.ClientCrede
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 
 /**
  * Resource Server Config
@@ -31,7 +29,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
         http.antMatcher("/**")
                 .authorizeRequests()
-                .anyRequest().access("hasRole('USER')");
+                .anyRequest().access("#oauth2.hasScope('read')");
     }
 
     @Override
@@ -48,12 +46,5 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Bean
     public OAuth2RestTemplate restTemplate() {
         return new OAuth2RestTemplate(clientCredentialsResourceDetails());
-    }
-
-    @Bean
-    public ResourceServerTokenServices tokenService() {
-        return new UserInfoTokenServices(
-                resourceServerProperties.getUserInfoUri(),
-                resourceServerProperties.getClientId());
     }
 }
