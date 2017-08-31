@@ -21,4 +21,5 @@ security:
       grant-type: client_credentials
     resource:
       id: resource-sample
-      token-info-uri: http://uaa.kimloong.me:5000/oauth/check_token
+      jwt:
+        keyUri: http://localhost:5000/oauth/token_key

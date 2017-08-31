@@ -19,3 +19,5 @@ security:
   oauth2:
     resource:
       filter-order: 1
+keystore:
+  password: mySecretKey
