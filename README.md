@@ -66,7 +66,7 @@ Body:
 
 5. 在浏览器请求以下链接(以下链接为模拟第三方客户端登录)
 ```
-http://localhost:8080/uc/oauth/authorize?response_type=code&client_id=microblog-client&redirect_uri=http://localhost:8082/microblog-client
+http://localhost:5000/oauth/authorize?response_type=code&client_id=microblog-client&redirect_uri=http://localhost:8082/microblog-client
 ```
 请求会跳转至登录页面，输入用户名密码(`步骤4`注册的用户)，请求会再次跳转至
 ```

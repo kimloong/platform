@@ -4,13 +4,7 @@ spring:
   cloud:
     config:
       fail-fast: true
-      discovery:
-        enabled: true
-        service-id: config
-eureka:
-  client:
-    service-url:
-      defaultZone: http://registry.kimloong.me:8761/eureka/
+      uri: http://config.kimloong.me:8888
 
 server:
   port: 5000
