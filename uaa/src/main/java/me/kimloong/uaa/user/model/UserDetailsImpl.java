@@ -7,7 +7,8 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
- * Created by Zhang JinLong(150429) on 2017-09-18.
+ * 用户Security实体
+ * @author KimLoong
  */
 public class UserDetailsImpl implements UserDetails {
 

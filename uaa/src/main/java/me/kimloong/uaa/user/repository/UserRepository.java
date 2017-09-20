@@ -1,5 +1,6 @@
 package me.kimloong.uaa.user.repository;
 
+import me.kimloong.uaa.common.repository.CrudRepository;
 import me.kimloong.uaa.user.model.User;
 import org.springframework.stereotype.Repository;
 
@@ -8,9 +9,5 @@ import org.springframework.stereotype.Repository;
  * @author KimLoong
  */
 @Repository
-public interface UserRepository {
-
-    User findOne(String username);
-
-    User add(User user);
+public interface UserRepository extends CrudRepository<User,String> {
 }

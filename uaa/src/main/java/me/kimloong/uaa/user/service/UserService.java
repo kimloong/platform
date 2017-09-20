@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
  * 用户Service
  *
- * @author KimLoon
+ * @author KimLoong
  */
 @Service
 public class UserService {
@@ -20,7 +20,7 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public User register(User user) {
+    public User add(User user) {
         String encodePassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodePassword);
         return repository.add(user);

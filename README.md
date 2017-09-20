@@ -43,7 +43,7 @@ java me.kimloong.resource.sample.ResourceSampleApplication
 ## 如何运行本项目
 1. 启动arangodb
 ```
-sudo docker run -p 8529:8529 -e ARANGO_ROOT_PASSWORD=root --name user-center-db -d arangodb
+sudo docker run -p 8529:8529 -e ARANGO_ROOT_PASSWORD=root --name uaa-db -d arangodb
 ```
 2. 访问arangodb
 ```
@@ -60,7 +60,7 @@ Header:
 Body:
   {
     "username":"user",
-    "password":"123456"
+    "password":"password"
   }
 ```
 

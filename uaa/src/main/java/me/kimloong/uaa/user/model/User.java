@@ -3,11 +3,8 @@ package me.kimloong.uaa.user.model;
 import com.arangodb.entity.BaseDocument;
 
 /**
- * Created by Zhang JinLong(150429) on 2017-09-18.
- */
-/**
  * 用户实体
- * @author KimLoon
+ * @author KimLoong
  */
 public class User extends BaseDocument {
 

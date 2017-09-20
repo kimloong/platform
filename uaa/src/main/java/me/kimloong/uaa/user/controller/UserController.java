@@ -29,6 +29,6 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST)
     public void register(@RequestBody User user){
-        userService.register(user);
+        userService.add(user);
     }
 }

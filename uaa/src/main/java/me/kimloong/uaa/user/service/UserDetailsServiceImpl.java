@@ -14,7 +14,8 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 
 /**
- * @author KimLoon
+ * 用户Security Service
+ * @author KimLoong
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

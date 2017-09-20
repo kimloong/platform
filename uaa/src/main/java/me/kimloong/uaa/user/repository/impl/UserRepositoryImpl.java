@@ -10,10 +10,13 @@ import java.util.Queue;
 
 /**
  * 用户DAO实现
+ *
  * @author KimLoong
  */
 @Repository
 public class UserRepositoryImpl implements UserRepository {
+
+    private static final String COLLECTION_NAME = "user";
 
     @Autowired
     private Queue<ArangoDatabase> queue;
@@ -21,7 +24,7 @@ public class UserRepositoryImpl implements UserRepository {
     public User findOne(String username) {
         ArangoDatabase database = queue.peek();
         try {
-            return database.getDocument("user/" + username, User.class);
+            return database.getDocument(COLLECTION_NAME + "/" + username, User.class);
         } finally {
             queue.add(database);
         }
@@ -30,7 +33,7 @@ public class UserRepositoryImpl implements UserRepository {
     public User add(User user) {
         ArangoDatabase database = queue.peek();
         try {
-            return database.collection("user").insertDocument(user).getNew();
+            return database.collection(COLLECTION_NAME).insertDocument(user).getNew();
         } finally {
             queue.add(database);
         }
