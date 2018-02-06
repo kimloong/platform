@@ -1,12 +1,9 @@
 package me.kimloong.uaa;
 
 import com.arangodb.ArangoDB;
-import com.arangodb.ArangoDatabase;
-import org.springframework.context.annotation.Bean;
+import com.arangodb.springframework.annotation.EnableArangoRepositories;
+import com.arangodb.springframework.config.AbstractArangoConfiguration;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * Arangodb数据库配置
@@ -14,14 +11,19 @@ import java.util.concurrent.ArrayBlockingQueue;
  * @author KimLoong
  */
 @Configuration
-public class ArangodbConfig {
+@EnableArangoRepositories
+public class ArangodbConfig extends AbstractArangoConfiguration {
 
-    @Bean
-    public Queue<ArangoDatabase> arangoDBs() {
-        Queue<ArangoDatabase> queue = new ArrayBlockingQueue<>(20);
-        ArangoDatabase database = new ArangoDB.Builder()
-                .user("root").password("root").build().db("uaa");
-        queue.add(database);
-        return queue;
+    @Override
+    public ArangoDB.Builder arango() {
+        return new ArangoDB.Builder()
+                .host("127.0.0.1", 8529)
+                .user("root")
+                .password("root");
+    }
+
+    @Override
+    public String database() {
+        return "uaa";
     }
 }

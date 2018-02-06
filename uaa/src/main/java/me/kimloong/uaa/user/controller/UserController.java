@@ -1,6 +1,6 @@
 package me.kimloong.uaa.user.controller;
 
-import me.kimloong.uaa.user.model.User;
+import me.kimloong.uaa.user.entity.User;
 import me.kimloong.uaa.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

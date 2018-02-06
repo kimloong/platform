@@ -13,9 +13,9 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class UAAApplication {
+public class UaaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UAAApplication.class, args);
+        SpringApplication.run(UaaApplication.class, args);
     }
 }

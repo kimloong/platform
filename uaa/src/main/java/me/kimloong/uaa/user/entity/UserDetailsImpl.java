@@ -1,10 +1,9 @@
-package me.kimloong.uaa.user.model;
+package me.kimloong.uaa.user.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Collections;
 
 /**
  * 用户Security实体

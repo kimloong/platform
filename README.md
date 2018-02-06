@@ -1,3 +1,5 @@
+[TOC]
+
 # 注册中心（服务注册与发现）
 ## 启动单一注册中心
 ```
@@ -49,6 +51,10 @@ sudo docker run -p 8529:8529 -e ARANGO_ROOT_PASSWORD=root --name uaa-db -d arang
 ```
 http://localhost:8529
 ```
+* 创建`uaa`数据库
+* 创建文档集合`user`,`group`
+* 创建边沿集合`childOf`,`belongTo`
+
 3. 启动服务
 * 使用`maven`执行`spring-boot:run`
 
@@ -184,7 +190,8 @@ public ResourceServerTokenServices tokenService() {
 * 解决方案
 1. 改用`RemoteTokenServices`,配置`security.oauth2.resource.token-info-uri`;
 因为`ResourceServerTokenServicesConfiguration`已有注册一个`RemoteTokenServices`因此可以直接省略;
-实际`user-info-uri`与`token-info-uri`都有返回`scope`但
+实际`user-info-uri`与`token-info-uri`都有返回`scope`但两者返回的scope位置不一样，前者返回的结构复杂，
+后者的返回信息较为简洁,`Spring Security`有进行解析。
 
 2. 使用`hasRole('USER')`验证是登录用户
 ```
@@ -204,3 +211,4 @@ public void configure(HttpSecurity http) throws Exception {
 
 # 参考文档
 > [Spring REST API + OAuth2 + AngularJS](http://www.baeldung.com/rest-api-spring-oauth2-angularjs)
+> [OAuth2 in depth: A step-by-step introduction for enterprises & JWT](https://www.voxxed.com/2016/10/oauth2-in-depth-introduction-for-enterprises/)
